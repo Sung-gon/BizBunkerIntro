@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>BizBunker | 1인 기업가를 위한 생존 런웨이 지휘소</title>
+    
+    <meta name="description" content="세상 어디에도 없는 1인 기업가 전용 재무, 의사결정 시뮬레이터. 서버로 데이터를 전송하지 않는 완벽한 100% 로컬 오프라인 보안을 제공합니다."/>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;700;800&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- AOS Scroll Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Pretendard', 'sans-serif'],
+                        outfit: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            900: '#060E20', /* Background Hero */
+                            800: '#0D152C', /* Cards */
+                            700: '#182442',
+                        },
+                        emerald: {
+                            400: '#34d399',
+                            500: '#10b981', /* Primary accents */
+                        },
+                        military: '#041219' /* Tactic dark */
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body { 
+            font-family: 'Pretendard', sans-serif;
+            background-color: #060E20; 
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        .hero-glow {
+            box-shadow: 0 0 100px rgba(16, 185, 129, 0.15);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        /* Custom scrollbar for gallery */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-emerald-500 selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-card transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center font-outfit font-bold text-white shadow-[0_0_15px_rgba(16,185,129,0.5)]">B</div>
+                <span class="text-xl font-bold font-outfit tracking-wider">BizBunker</span>
+            </div>
+            <a href="#download" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold rounded-full bg-white text-navy-900 hover:bg-gray-100 transition shadow-lg">
+                App Store에서 다운로드
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden flex flex-col items-center text-center px-6">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-emerald-500/10 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
+
+        <div class="max-w-5xl mx-auto z-10" data-aos="fade-up" data-aos-duration="1000">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 mb-8 text-xs font-semibold tracking-wide text-emerald-400 border border-emerald-500/30 rounded-full glass-card">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                완전히 독립된 데스크탑 클래스 앱
+            </div>
+            
+            <h1 class="text-5xl lg:text-7xl font-extrabold tracking-tight mb-8 leading-tight">
+                세상 어디에도 없던 <br class="hidden md:block"/>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-200">1인 기업가</span> 전술 지휘소
+            </h1>
+            
+            <p class="text-lg lg:text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+                나의 비즈니스는 앞으로 몇 달을 더 버틸 수 있을까요? <br/>
+                단순한 가계부가 아닙니다. 내 사업의 잔여 생존 기간(Runway)을 계산하고 모든 재무 기밀을 안전한 오프라인 벙커에 보관하세요.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="#download" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-bold rounded-xl bg-emerald-500 text-white hover:bg-emerald-600 transition shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.04 2.26-.74 3.73-.78 2.02-.14 3.39.86 4.16 2.36-3.41 1.76-2.58 6.43.91 7.82-.48 1.25-1.14 2.5-1.88 3.77zm-4.32-15.11c-.04-1.83 1.39-3.46 3.16-3.66 1.11 2.24-1.39 3.86-3.16 3.66z"/></svg>
+                    지금 다운로드 (무료 체험)
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Dashboard Hero Image -->
+        <div class="mt-16 sm:mt-24 w-full max-w-6xl mx-auto z-10" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1200">
+            <div class="relative rounded-2xl overflow-hidden glass-card border border-white/10 shadow-2xl hero-glow group p-1 lg:p-2 bg-gradient-to-b from-white/10 to-transparent">
+                <img src="./assets/shot1.png" alt="BizBunker 대시보드 메인" class="w-full rounded-xl object-cover transform transition-transform duration-700 bg-navy-900 min-h-[400px]">
+            </div>
+        </div>
+    </section>
+
+    <!-- App Gallery Slider Section (7 Shots) -->
+    <section class="py-24 bg-military border-t border-b border-white/5 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 mb-12 text-center" data-aos="fade-up">
+            <h2 class="text-3xl lg:text-4xl font-bold tracking-tight mb-4">완벽하게 통제되는 인터페이스</h2>
+            <p class="text-gray-400">데이터를 넣는 순간, 사업의 취약점과 기회가 입체적으로 투사됩니다.</p>
+        </div>
+        
+        <div class="w-full overflow-x-auto hide-scrollbar pb-10" data-aos="fade-up" data-aos-delay="200">
+            <div class="flex gap-6 px-6 lg:px-12 w-max mx-auto">
+                <!-- Gallery Items -->
+                <div class="w-[300px] lg:w-[450px] flex-shrink-0 rounded-2xl overflow-hidden glass-card border border-white/10 group">
+                    <img src="./assets/shot2.png" alt="스크린샷 2" class="w-full h-auto object-cover group-hover:scale-105 transition duration-500">
+                </div>
+                <div class="w-[300px] lg:w-[450px] flex-shrink-0 rounded-2xl overflow-hidden glass-card border border-white/10 group">
+                    <img src="./assets/shot3.png" alt="스크린샷 3" class="w-full h-auto object-cover group-hover:scale-105 transition duration-500">
+                </div>
+                <div class="w-[300px] lg:w-[450px] flex-shrink-0 rounded-2xl overflow-hidden glass-card border border-white/10 group">
+                    <img src="./assets/shot4.png" alt="스크린샷 4" class="w-full h-auto object-cover group-hover:scale-105 transition duration-500">
+                </div>
+                <div class="w-[300px] lg:w-[450px] flex-shrink-0 rounded-2xl overflow-hidden glass-card border border-white/10 group">
+                    <img src="./assets/shot5.png" alt="스크린샷 5" class="w-full h-auto object-cover group-hover:scale-105 transition duration-500">
+                </div>
+                <div class="w-[300px] lg:w-[450px] flex-shrink-0 rounded-2xl overflow-hidden glass-card border border-white/10 group">
+                    <img src="./assets/shot6.png" alt="스크린샷 6" class="w-full h-auto object-cover group-hover:scale-105 transition duration-500">
+                </div>
+                <div class="w-[300px] lg:w-[450px] flex-shrink-0 rounded-2xl overflow-hidden glass-card border border-white/10 group">
+                    <img src="./assets/shot7.png" alt="스크린샷 7" class="w-full h-auto object-cover group-hover:scale-105 transition duration-500">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Philosophy / Uniqueness -->
+    <section class="py-24 bg-navy-900 border-b border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+            <div data-aos="fade-right">
+                <h2 class="text-3xl lg:text-5xl font-bold tracking-tight mb-6">서버 없음. 해킹 제로.<br/>완벽한 100% 로컬 보안</h2>
+                <p class="text-gray-400 text-lg leading-relaxed mb-8">
+                    내 재무 데이터를 외부 클라우드나 SaaS 서버에 전송하는 것이 찜찜하셨나요?<br/>
+                    BizBunker는 클라우드 서버 자체가 없습니다. 단 1바이트의 데이터도 외부로 빠져나가지 않으며, 모든 장부는 오직 여러분의 기기에만 군사급(AES-256) 암호화로 격리 보관됩니다.
+                </p>
+                <div class="glass-card p-6 rounded-2xl border-l-4 border-emerald-500 bg-emerald-500/5">
+                    <p class="text-emerald-300 font-semibold text-lg">💡 Time Machine Snapshot</p>
+                    <p class="text-gray-400 mt-2 text-sm">로컬 기기 내에서 버튼 클릭 한 번에 전체 데이터베이스의 무제한 백업 스냅샷을 생성하고 언제든 복원할 수 있습니다.</p>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6" data-aos="fade-left">
+                <div class="glass-card p-8 rounded-2xl border border-white/5">
+                    <div class="text-emerald-400 mb-4"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div>
+                    <h3 class="text-xl font-bold mb-2">런웨이 시뮬레이션</h3>
+                    <p class="text-gray-400 text-sm">지금 내 현금은 몇 달 뒤에 고갈되는지 즉각 계산하여 비상 상황(DEFCON 1)을 예방합니다.</p>
+                </div>
+                <div class="glass-card p-8 rounded-2xl border border-white/5">
+                    <div class="text-emerald-400 mb-4"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></div>
+                    <h3 class="text-xl font-bold mb-2">프라이빗 자산 벙커</h3>
+                    <p class="text-gray-400 text-sm">외부 계좌 연동의 정보 유출 위험 없이, 철저히 독립된 환경에서 다 계좌 통제를 실행합니다.</p>
+                </div>
+                <div class="glass-card p-8 rounded-2xl border border-white/5 bg-gradient-to-br from-navy-800 to-navy-900">
+                    <div class="text-emerald-400 mb-4"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg></div>
+                    <h3 class="text-xl font-bold mb-2">고정비 파괴 (Cost Diet)</h3>
+                    <p class="text-gray-400 text-sm">자동으로 구독료와 고정 지출을 해부하여 현금 흐름을 극대화할 수 있는 포인트를 짚어냅니다.</p>
+                </div>
+                <div class="glass-card p-8 rounded-2xl border border-white/5">
+                    <div class="text-emerald-400 mb-4"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
+                    <h3 class="text-xl font-bold mb-2">세금 벙커 (Tax Bunker)</h3>
+                    <p class="text-gray-400 text-sm">수익이 발생하는 즉시 일정 비율을 안전한 가상 벙커로 송금 처리하여 종합소득세 폭탄을 방어합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Exclusive Value Section (Replacement for comparison) -->
+    <section class="py-24 bg-gradient-to-b from-navy-900 to-military" id="download">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div data-aos="fade-up">
+                <div class="inline-flex items-center gap-2 px-4 py-1 mb-6 text-xs font-semibold tracking-wide text-amber-400 border border-amber-500/30 rounded-full glass-card">
+                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+                    Masterpiece of Solopreneurship
+                </div>
+                <h2 class="text-3xl lg:text-5xl font-bold tracking-tight mb-6">세상 어디에도 없는<br/>오직 단 하나의 전술 지휘소</h2>
+                <p class="text-gray-400 text-lg mb-12 max-w-2xl mx-auto">
+                    BizBunker는 흔한 가계부나 장부 관리 앱이 아닙니다. 철저히 고립된 1인 기업가의 생존을 위해 극비리에 고안된 '프라이빗 의사결정 시뮬레이터'입니다. 전 세계 어디를 뒤져봐도 이와 같은 오프라인 전용 사령부는 존재하지 않습니다.
+                </p>
+            </div>
+            
+            <div class="max-w-2xl mx-auto bg-gradient-to-br from-emerald-500/20 to-navy-800 p-1 rounded-3xl relative mb-16" data-aos="zoom-in" data-aos-delay="200">
+                <div class="absolute -top-3 right-8 bg-emerald-500 text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider animate-pulse shadow-lg">Premium Lifetime</div>
+                <div class="bg-navy-900 rounded-[22px] p-10 h-full flex flex-col justify-center border border-emerald-500/30">
+                    <h4 class="text-emerald-400 font-bold mb-4 text-xl">BizBunker 평생 소장 라이선스</h4>
+                    <div class="flex items-end justify-center gap-2 mb-8">
+                        <span class="text-6xl font-black">₩14,900</span>
+                    </div>
+                    <ul class="text-left space-y-4 mb-2 max-w-sm mx-auto">
+                        <li class="flex items-center text-gray-200"><span class="mr-3 text-emerald-500"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span> 대체 불가능한 1인 기업 전용 대시보드</li>
+                        <li class="flex items-center text-gray-200"><span class="mr-3 text-emerald-500"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span> 계정 가입조차 필요없는 완전한 익명성 보장</li>
+                        <li class="flex items-center text-gray-200"><span class="mr-3 text-emerald-500"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span> 복잡한 월 구독료 없이 평생 소장 및 업데이트</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div data-aos="fade-up" data-aos-delay="400">
+                <a href="#" class="inline-flex items-center justify-center w-full md:w-auto px-12 py-5 text-xl font-bold rounded-2xl bg-white text-black hover:scale-105 transition-transform duration-300 shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+                    <svg class="w-8 h-8 mr-3" fill="currentColor" viewBox="0 0 24 24"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.04 2.26-.74 3.73-.78 2.02-.14 3.39.86 4.16 2.36-3.41 1.76-2.58 6.43.91 7.82-.48 1.25-1.14 2.5-1.88 3.77zm-4.32-15.11c-.04-1.83 1.39-3.46 3.16-3.66 1.11 2.24-1.39 3.86-3.16 3.66z"/></svg>
+                    App Store 다운로드 (무료 체험)
+                </a>
+                <p class="mt-4 text-gray-500 text-sm">결제 전 인앱 환경을 실시간으로 시뮬레이션 할 수 있습니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy-900 border-t border-white/5 py-12">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 rounded bg-emerald-500/20 border border-emerald-500/50 flex items-center justify-center font-outfit font-bold text-emerald-400 text-xs">B</div>
+                <span class="font-bold text-gray-300 tracking-wider">BizBunker</span>
+            </div>
+            <p class="text-sm text-gray-600">© 2026 Elfwood. All rights reserved. 1인 기업 독립 스튜디오.</p>
+            <div class="flex gap-4">
+                <a href="#" class="text-gray-500 hover:text-white transition text-sm">개인정보처리방침</a>
+                <a href="#" class="text-gray-500 hover:text-white transition text-sm">이용약관</a>
+                <a href="https://github.com/elfwood/decision-system/issues" class="text-gray-500 hover:text-white transition text-sm">고객지원 (Github)</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, offset: 50 });
+        
+        // Navbar Scrolled Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-xl', 'bg-[#060E20]/90');
+                nav.classList.remove('glass-card');
+            } else {
+                nav.classList.remove('shadow-xl', 'bg-[#060E20]/90');
+                nav.classList.add('glass-card');
+            }
+        });
+    </script>
+</body>
+</html>

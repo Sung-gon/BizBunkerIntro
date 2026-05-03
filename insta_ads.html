@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <title>Instagram Ad Templates</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Pretendard', 'sans-serif'] },
+                    colors: { navy: { 900: '#060E20', 800: '#0D152C' }, emerald: { 400: '#34d399', 500: '#10b981' } }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #1a1a1a; display: flex; flex-wrap: wrap; gap: 40px; padding: 40px; justify-content: center; font-family: 'Pretendard', sans-serif;}
+        .ig-frame {
+            width: 1080px; height: 1080px; background-color: #060E20; position: relative; overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5); border-radius: 20px;
+            transform: scale(0.6); transform-origin: top left;
+            margin-bottom: -432px; margin-right: -432px;
+        }
+        .glow { box-shadow: 0 0 120px rgba(16, 185, 129, 0.4); }
+        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); }
+    </style>
+</head>
+<body class="text-white">
+
+    <!-- Ad 1: Hook -->
+    <div class="ig-frame">
+        <div class="absolute top-[-20%] left-[-20%] w-[800px] h-[800px] bg-emerald-500/20 rounded-full blur-[120px]"></div>
+        <div class="p-20 flex flex-col h-full relative z-10">
+            <div class="inline-flex px-6 py-2 rounded-full border border-emerald-500/50 text-emerald-400 font-bold text-3xl mb-12 w-max glass tracking-wide">
+                1인 기업가 전용
+            </div>
+            <h1 class="text-[90px] font-black leading-[1.1] tracking-tight mb-8">
+                끝없는 <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-200">SaaS 월 구독료</span><br/>언제까지 내실 건가요?
+            </h1>
+            <p class="text-4xl text-gray-400 font-semibold mb-16">
+                가계부, 장부, 메모장... 흩어진 데이터를 모아<br/>완벽히 통제하는 오프라인 사령부의 탄생.
+            </p>
+            
+            <div class="mt-auto relative">
+                <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-transparent to-transparent z-20"></div>
+                <img src="./assets/shot1.png" class="w-[900px] rounded-3xl border-4 border-white/10 glow transform rotate-3 origin-bottom-right" alt="Dashboard" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Ad 2: Runway -->
+    <div class="ig-frame" style="background: radial-gradient(circle at 100% 50%, #0D152C, #060E20);">
+        <div class="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-blue-500/20 rounded-full blur-[100px]"></div>
+        <div class="p-20 flex flex-col h-full relative z-10 items-center text-center">
+            <h1 class="text-[85px] font-black leading-[1.1] tracking-tight mb-8">
+                내 통장의 생명줄,<br/>정확히 <span class="text-emerald-400 border-b-8 border-emerald-500">몇 달</span> 남았습니까?
+            </h1>
+            <p class="text-3xl text-gray-400 font-semibold mb-16">
+                지금 남은 현금으로 버틸 수 있는 생존 런웨이(Runway)를<br/>1초 만에 시뮬레이션하세요.
+            </p>
+            
+            <div class="relative w-[850px] mx-auto mt-12">
+                <div class="absolute -inset-4 bg-emerald-500/20 blur-3xl z-0"></div>
+                <img src="./assets/shot2.png" class="w-full rounded-2xl border-2 border-white/20 relative z-10 shadow-2xl glass" alt="Runway" />
+            </div>
+
+            <div class="mt-auto flex items-center gap-6 justify-center w-full">
+                <div class="w-20 h-2px bg-emerald-500/50"></div>
+                <span class="text-3xl font-bold tracking-widest text-emerald-400">BizBunker iPad</span>
+                <div class="w-20 h-2px bg-emerald-500/50"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ad 3: Security -->
+    <div class="ig-frame bg-black relative">
+        <!-- Matrix/Security style background -->
+        <div class="absolute inset-0 opacity-20" style="background-image: repeating-linear-gradient(0deg, transparent, transparent 49px, #10b981 50px); background-size: 100% 50px;"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-black via-black/80 to-[#041219]"></div>
+
+        <div class="p-20 flex flex-col h-full relative z-10">
+            <div class="mb-12">
+                <div class="w-24 h-24 rounded-2xl bg-red-500/20 text-red-500 flex items-center justify-center border border-red-500/50 mb-10 shadow-[0_0_30px_rgba(239,68,68,0.3)]">
+                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8V7a4 4 0 00-8 0v4h8z"></path></svg>
+                </div>
+                <h1 class="text-[85px] font-black leading-[1.1] tracking-tight text-white mb-6">
+                    내 재무 데이터, <br/>왜 남의 서버에 두나요?
+                </h1>
+                <p class="text-3xl text-gray-400 font-semibold mb-6">
+                    단 1바이트도 빠져나가지 않는 100% 로컬 오프라인 사령부.<br/>가입조차 필요 없는 완전한 익명성.
+                </p>
+            </div>
+            
+            <div class="mt-auto pb-10 flex gap-8 items-end relative">
+                <img src="./assets/shot5.png" class="w-[500px] rounded-2xl border-2 border-white/10 glow transform -rotate-2" alt="Security 1" />
+                <img src="./assets/shot3.png" class="w-[550px] rounded-2xl border-2 border-white/10 shadow-2xl glass transform translate-y-12 rotate-2 relative z-10" alt="Security 2" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Ad 4: Pricing/CTA -->
+    <div class="ig-frame bg-gradient-to-br from-navy-900 to-[#0A1A12]">
+        <div class="absolute top-[20%] right-[-10%] w-[500px] h-[500px] bg-emerald-500/30 rounded-full blur-[120px]"></div>
+        
+        <div class="p-20 flex flex-col h-full relative z-10 items-center justify-center text-center">
+            
+            <div class="glass p-16 rounded-[40px] w-full border border-emerald-500/30 relative">
+                <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-emerald-500 text-white font-bold text-2xl px-10 py-3 rounded-full uppercase tracking-widest shadow-lg">
+                    Premium License
+                </div>
+                
+                <h2 class="text-5xl font-bold text-gray-300 mb-8 mt-4">N사 장부앱 매월 11,000원 납부?</h2>
+                <div class="line-through text-6xl font-black text-gray-500 mb-12">1년 유지비 132,000원</div>
+                
+                <div class="w-full h-px bg-white/20 mb-12"></div>
+                
+                <h3 class="text-5xl font-bold text-emerald-400 mb-6">BizBunker 평생 소장 라이선스</h3>
+                <div class="text-[120px] font-black text-white mb-2 tracking-tighter">
+                    ₩14,900
+                </div>
+                <p class="text-3xl text-emerald-300 font-semibold mb-12">단 한 번의 결제로 영원히 소장하세요.</p>
+                
+                <ul class="text-left space-y-6 text-3xl text-gray-200 inline-block">
+                    <li class="flex items-center"><span class="text-emerald-500 mr-4 font-bold">✓</span> 로컬 기기 평생 귀속</li>
+                    <li class="flex items-center"><span class="text-emerald-500 mr-4 font-bold">✓</span> 구독료 제로</li>
+                    <li class="flex items-center"><span class="text-emerald-500 mr-4 font-bold">✓</span> 모든 기능 무제한 업데이트</li>
+                </ul>
+            </div>
+
+            <div class="mt-16 bg-white text-black font-black text-4xl px-20 py-8 rounded-full shadow-[0_0_50px_rgba(255,255,255,0.4)] hover:scale-105 transition transform flex items-center gap-4">
+                👉 프로필 링크에서 만나보세요!
+            </div>
+            
+        </div>
+    </div>
+
+</body>
+</html>

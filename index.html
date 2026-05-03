@@ -68,10 +68,20 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+        
+        /* Language Toggle Styles */
+        .lang-en { display: none; }
+        .lang-ko { display: block; }
+        span.lang-ko, span.lang-en, a.lang-ko, a.lang-en { display: none; }
+        body[data-lang="ko"] .lang-ko { display: block; }
+        body[data-lang="ko"] span.lang-ko, body[data-lang="ko"] a.lang-ko { display: inline-block; }
+        body[data-lang="en"] .lang-en { display: block; }
+        body[data-lang="en"] span.lang-en, body[data-lang="en"] a.lang-en { display: inline-block; }
+        body[data-lang="en"] .lang-ko { display: none !important; }
     </style>
 </head>
 
-<body class="antialiased selection:bg-emerald-500 selection:text-white">
+<body class="antialiased selection:bg-emerald-500 selection:text-white" data-lang="ko">
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 glass-card transition-all duration-300" id="navbar">
@@ -80,9 +90,19 @@
                 <div class="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center font-outfit font-bold text-white shadow-[0_0_15px_rgba(16,185,129,0.5)]">B</div>
                 <span class="text-xl font-bold font-outfit tracking-wider">BizBunker</span>
             </div>
-            <a href="#download" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold rounded-full bg-white text-navy-900 hover:bg-gray-100 transition shadow-lg">
-                App Store에서 다운로드
-            </a>
+            <div class="flex items-center gap-6">
+                <!-- Language Toggle Button -->
+                <button onclick="toggleLanguage()" class="text-sm font-semibold text-gray-300 hover:text-white transition flex items-center gap-1.5 bg-white/5 px-3 py-1.5 rounded-full border border-white/10 hover:bg-white/10">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
+                    <span id="lang-toggle-text">English</span>
+                </button>
+                
+                <!-- TODO: 아래 href 속성의 idXXXXXXXXX 부분을 실제 App Store 앱 ID로 변경해주세요 -->
+                <a href="https://apps.apple.com/app/idXXXXXXXXX" target="_blank" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold rounded-full bg-white text-navy-900 hover:bg-gray-100 transition shadow-lg">
+                    <span class="lang-ko">App Store 다운로드</span>
+                    <span class="lang-en">Download on App Store</span>
+                </a>
+            </div>
         </div>
     </nav>
 
@@ -93,23 +113,34 @@
         <div class="max-w-5xl mx-auto z-10" data-aos="fade-up" data-aos-duration="1000">
             <div class="inline-flex items-center gap-2 px-4 py-1.5 mb-8 text-xs font-semibold tracking-wide text-emerald-400 border border-emerald-500/30 rounded-full glass-card">
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                완전히 독립된 데스크탑 클래스 앱
+                <span class="lang-ko">완전히 독립된 데스크탑 클래스 앱</span>
+                <span class="lang-en">Completely independent desktop-class app</span>
             </div>
             
-            <h1 class="text-5xl lg:text-7xl font-extrabold tracking-tight mb-8 leading-tight">
+            <h1 class="text-5xl lg:text-7xl font-extrabold tracking-tight mb-8 leading-tight lang-ko">
                 세상 어디에도 없던 <br class="hidden md:block"/>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-200">1인 기업가</span> 전술 지휘소
             </h1>
+            <h1 class="text-5xl lg:text-7xl font-extrabold tracking-tight mb-8 leading-tight lang-en">
+                The ultimate tactical command center <br class="hidden md:block"/>
+                for <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-200">solopreneurs</span>
+            </h1>
             
-            <p class="text-lg lg:text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+            <p class="text-lg lg:text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed lang-ko">
                 나의 비즈니스는 앞으로 몇 달을 더 버틸 수 있을까요? <br/>
                 단순한 가계부가 아닙니다. 내 사업의 잔여 생존 기간(Runway)을 계산하고 모든 재무 기밀을 안전한 오프라인 벙커에 보관하세요.
             </p>
+            <p class="text-lg lg:text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed lang-en">
+                How many months can your business survive? <br/>
+                Not just another ledger. Simulate your survival runway and keep all your financial secrets safe in a 100% offline bunker.
+            </p>
             
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="#download" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-bold rounded-xl bg-emerald-500 text-white hover:bg-emerald-600 transition shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+                <!-- TODO: 아래 href 속성의 idXXXXXXXXX 부분을 실제 App Store 앱 ID로 변경해주세요 -->
+                <a href="https://apps.apple.com/app/idXXXXXXXXX" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-bold rounded-xl bg-emerald-500 text-white hover:bg-emerald-600 transition shadow-[0_0_20px_rgba(16,185,129,0.3)]">
                     <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.04 2.26-.74 3.73-.78 2.02-.14 3.39.86 4.16 2.36-3.41 1.76-2.58 6.43.91 7.82-.48 1.25-1.14 2.5-1.88 3.77zm-4.32-15.11c-.04-1.83 1.39-3.46 3.16-3.66 1.11 2.24-1.39 3.86-3.16 3.66z"/></svg>
-                    지금 다운로드 (무료 체험)
+                    <span class="lang-ko">지금 다운로드 (무료 체험)</span>
+                    <span class="lang-en">Download Now (Free Trial)</span>
                 </a>
             </div>
         </div>
@@ -117,7 +148,7 @@
         <!-- Main Dashboard Hero Image -->
         <div class="mt-16 sm:mt-24 w-full max-w-6xl mx-auto z-10" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1200">
             <div class="relative rounded-2xl overflow-hidden glass-card border border-white/10 shadow-2xl hero-glow group p-1 lg:p-2 bg-gradient-to-b from-white/10 to-transparent">
-                <img src="./assets/shot1.png" alt="BizBunker 대시보드 메인" class="w-full rounded-xl object-cover transform transition-transform duration-700 bg-navy-900 min-h-[400px]">
+                <img src="./assets/shot1.png" alt="BizBunker Dashboard" class="w-full rounded-xl object-cover transform transition-transform duration-700 bg-navy-900 min-h-[400px]">
             </div>
         </div>
     </section>
@@ -125,30 +156,33 @@
     <!-- App Gallery Slider Section (7 Shots) -->
     <section class="py-24 bg-military border-t border-b border-white/5 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-6 mb-12 text-center" data-aos="fade-up">
-            <h2 class="text-3xl lg:text-4xl font-bold tracking-tight mb-4">완벽하게 통제되는 인터페이스</h2>
-            <p class="text-gray-400">데이터를 넣는 순간, 사업의 취약점과 기회가 입체적으로 투사됩니다.</p>
+            <h2 class="text-3xl lg:text-4xl font-bold tracking-tight mb-4 lang-ko">완벽하게 통제되는 인터페이스</h2>
+            <h2 class="text-3xl lg:text-4xl font-bold tracking-tight mb-4 lang-en">Perfectly Controlled Interface</h2>
+            
+            <p class="text-gray-400 lang-ko">데이터를 넣는 순간, 사업의 취약점과 기회가 입체적으로 투사됩니다.</p>
+            <p class="text-gray-400 lang-en">The moment you enter data, vulnerabilities and opportunities are vividly projected.</p>
         </div>
         
         <div class="w-full overflow-x-auto hide-scrollbar pb-10" data-aos="fade-up" data-aos-delay="200">
             <div class="flex gap-6 px-6 lg:px-12 w-max mx-auto">
                 <!-- Gallery Items -->
                 <div class="w-[300px] lg:w-[450px] flex-shrink-0 rounded-2xl overflow-hidden glass-card border border-white/10 group">
-                    <img src="./assets/shot2.png" alt="스크린샷 2" class="w-full h-auto object-cover group-hover:scale-105 transition duration-500">
+                    <img src="./assets/shot2.png" alt="Screenshot 2" class="w-full h-auto object-cover group-hover:scale-105 transition duration-500">
                 </div>
                 <div class="w-[300px] lg:w-[450px] flex-shrink-0 rounded-2xl overflow-hidden glass-card border border-white/10 group">
-                    <img src="./assets/shot3.png" alt="스크린샷 3" class="w-full h-auto object-cover group-hover:scale-105 transition duration-500">
+                    <img src="./assets/shot3.png" alt="Screenshot 3" class="w-full h-auto object-cover group-hover:scale-105 transition duration-500">
                 </div>
                 <div class="w-[300px] lg:w-[450px] flex-shrink-0 rounded-2xl overflow-hidden glass-card border border-white/10 group">
-                    <img src="./assets/shot4.png" alt="스크린샷 4" class="w-full h-auto object-cover group-hover:scale-105 transition duration-500">
+                    <img src="./assets/shot4.png" alt="Screenshot 4" class="w-full h-auto object-cover group-hover:scale-105 transition duration-500">
                 </div>
                 <div class="w-[300px] lg:w-[450px] flex-shrink-0 rounded-2xl overflow-hidden glass-card border border-white/10 group">
-                    <img src="./assets/shot5.png" alt="스크린샷 5" class="w-full h-auto object-cover group-hover:scale-105 transition duration-500">
+                    <img src="./assets/shot5.png" alt="Screenshot 5" class="w-full h-auto object-cover group-hover:scale-105 transition duration-500">
                 </div>
                 <div class="w-[300px] lg:w-[450px] flex-shrink-0 rounded-2xl overflow-hidden glass-card border border-white/10 group">
-                    <img src="./assets/shot6.png" alt="스크린샷 6" class="w-full h-auto object-cover group-hover:scale-105 transition duration-500">
+                    <img src="./assets/shot6.png" alt="Screenshot 6" class="w-full h-auto object-cover group-hover:scale-105 transition duration-500">
                 </div>
                 <div class="w-[300px] lg:w-[450px] flex-shrink-0 rounded-2xl overflow-hidden glass-card border border-white/10 group">
-                    <img src="./assets/shot7.png" alt="스크린샷 7" class="w-full h-auto object-cover group-hover:scale-105 transition duration-500">
+                    <img src="./assets/shot7.png" alt="Screenshot 7" class="w-full h-auto object-cover group-hover:scale-105 transition duration-500">
                 </div>
             </div>
         </div>
@@ -158,43 +192,59 @@
     <section class="py-24 bg-navy-900 border-b border-white/5 relative">
         <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
             <div data-aos="fade-right">
-                <h2 class="text-3xl lg:text-5xl font-bold tracking-tight mb-6">서버 없음. 해킹 제로.<br/>완벽한 100% 로컬 보안</h2>
-                <p class="text-gray-400 text-lg leading-relaxed mb-8">
+                <h2 class="text-3xl lg:text-5xl font-bold tracking-tight mb-6 lang-ko">서버 없음. 해킹 제로.<br/>완벽한 100% 로컬 보안</h2>
+                <h2 class="text-3xl lg:text-5xl font-bold tracking-tight mb-6 lang-en">No Servers. Zero Hacks.<br/>100% Local Security</h2>
+                
+                <p class="text-gray-400 text-lg leading-relaxed mb-8 lang-ko">
                     내 재무 데이터를 외부 클라우드나 SaaS 서버에 전송하는 것이 찜찜하셨나요?<br/>
                     BizBunker는 클라우드 서버 자체가 없습니다. 단 1바이트의 데이터도 외부로 빠져나가지 않으며, 모든 장부는 오직 여러분의 기기에만 군사급(AES-256) 암호화로 격리 보관됩니다.
                 </p>
+                <p class="text-gray-400 text-lg leading-relaxed mb-8 lang-en">
+                    Uncomfortable sending your financial data to external clouds or SaaS platforms?<br/>
+                    BizBunker has zero cloud servers. Not a single byte of data leaves your device. Everything is securely isolated and encrypted (AES-256) locally on your iPad.
+                </p>
+                
                 <div class="glass-card p-6 rounded-2xl border-l-4 border-emerald-500 bg-emerald-500/5">
                     <p class="text-emerald-300 font-semibold text-lg">💡 Time Machine Snapshot</p>
-                    <p class="text-gray-400 mt-2 text-sm">로컬 기기 내에서 버튼 클릭 한 번에 전체 데이터베이스의 무제한 백업 스냅샷을 생성하고 언제든 복원할 수 있습니다.</p>
+                    <p class="text-gray-400 mt-2 text-sm lang-ko">로컬 기기 내에서 버튼 클릭 한 번에 전체 데이터베이스의 무제한 백업 스냅샷을 생성하고 언제든 복원할 수 있습니다.</p>
+                    <p class="text-gray-400 mt-2 text-sm lang-en">Create unlimited backup snapshots of your entire database locally with a single click and restore anytime.</p>
                 </div>
             </div>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6" data-aos="fade-left">
                 <div class="glass-card p-8 rounded-2xl border border-white/5">
                     <div class="text-emerald-400 mb-4"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div>
-                    <h3 class="text-xl font-bold mb-2">런웨이 시뮬레이션</h3>
-                    <p class="text-gray-400 text-sm">지금 내 현금은 몇 달 뒤에 고갈되는지 즉각 계산하여 비상 상황(DEFCON 1)을 예방합니다.</p>
+                    <h3 class="text-xl font-bold mb-2 lang-ko">런웨이 시뮬레이션</h3>
+                    <h3 class="text-xl font-bold mb-2 lang-en">Runway Simulation</h3>
+                    <p class="text-gray-400 text-sm lang-ko">지금 내 현금은 몇 달 뒤에 고갈되는지 즉각 계산하여 비상 상황(DEFCON 1)을 예방합니다.</p>
+                    <p class="text-gray-400 text-sm lang-en">Instantly calculates when your cash will run out to prevent DEFCON 1 emergencies.</p>
                 </div>
                 <div class="glass-card p-8 rounded-2xl border border-white/5">
                     <div class="text-emerald-400 mb-4"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></div>
-                    <h3 class="text-xl font-bold mb-2">프라이빗 자산 벙커</h3>
-                    <p class="text-gray-400 text-sm">외부 계좌 연동의 정보 유출 위험 없이, 철저히 독립된 환경에서 다 계좌 통제를 실행합니다.</p>
+                    <h3 class="text-xl font-bold mb-2 lang-ko">프라이빗 자산 벙커</h3>
+                    <h3 class="text-xl font-bold mb-2 lang-en">Private Asset Bunker</h3>
+                    <p class="text-gray-400 text-sm lang-ko">외부 계좌 연동의 정보 유출 위험 없이, 철저히 독립된 환경에서 다 계좌 통제를 실행합니다.</p>
+                    <p class="text-gray-400 text-sm lang-en">Control multiple accounts in a strictly isolated environment without the risk of external bank linking leaks.</p>
                 </div>
                 <div class="glass-card p-8 rounded-2xl border border-white/5 bg-gradient-to-br from-navy-800 to-navy-900">
                     <div class="text-emerald-400 mb-4"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg></div>
-                    <h3 class="text-xl font-bold mb-2">고정비 파괴 (Cost Diet)</h3>
-                    <p class="text-gray-400 text-sm">자동으로 구독료와 고정 지출을 해부하여 현금 흐름을 극대화할 수 있는 포인트를 짚어냅니다.</p>
+                    <h3 class="text-xl font-bold mb-2 lang-ko">고정비 파괴 (Cost Diet)</h3>
+                    <h3 class="text-xl font-bold mb-2 lang-en">Cost Diet</h3>
+                    <p class="text-gray-400 text-sm lang-ko">자동으로 구독료와 고정 지출을 해부하여 현금 흐름을 극대화할 수 있는 포인트를 짚어냅니다.</p>
+                    <p class="text-gray-400 text-sm lang-en">Automatically dissects subscriptions and fixed costs to pinpoint ways to maximize your cash flow.</p>
                 </div>
                 <div class="glass-card p-8 rounded-2xl border border-white/5">
                     <div class="text-emerald-400 mb-4"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
-                    <h3 class="text-xl font-bold mb-2">세금 벙커 (Tax Bunker)</h3>
-                    <p class="text-gray-400 text-sm">수익이 발생하는 즉시 일정 비율을 안전한 가상 벙커로 송금 처리하여 종합소득세 폭탄을 방어합니다.</p>
+                    <h3 class="text-xl font-bold mb-2 lang-ko">세금 벙커 (Tax Bunker)</h3>
+                    <h3 class="text-xl font-bold mb-2 lang-en">Tax Bunker</h3>
+                    <p class="text-gray-400 text-sm lang-ko">수익이 발생하는 즉시 일정 비율을 안전한 가상 벙커로 송금 처리하여 종합소득세 폭탄을 방어합니다.</p>
+                    <p class="text-gray-400 text-sm lang-en">Defend against tax bombs by instantly routing a portion of revenue to a virtual bunker.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Exclusive Value Section (Replacement for comparison) -->
+    <!-- Exclusive Value Section -->
     <section class="py-24 bg-gradient-to-b from-navy-900 to-military" id="download">
         <div class="max-w-4xl mx-auto px-6 text-center">
             <div data-aos="fade-up">
@@ -202,33 +252,56 @@
                     <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
                     Masterpiece of Solopreneurship
                 </div>
-                <h2 class="text-3xl lg:text-5xl font-bold tracking-tight mb-6">세상 어디에도 없는<br/>오직 단 하나의 전술 지휘소</h2>
-                <p class="text-gray-400 text-lg mb-12 max-w-2xl mx-auto">
+                <h2 class="text-3xl lg:text-5xl font-bold tracking-tight mb-6 lang-ko">세상 어디에도 없는<br/>오직 단 하나의 전술 지휘소</h2>
+                <h2 class="text-3xl lg:text-5xl font-bold tracking-tight mb-6 lang-en">The One and Only<br/>Tactical Command Center</h2>
+                
+                <p class="text-gray-400 text-lg mb-12 max-w-2xl mx-auto lang-ko">
                     BizBunker는 흔한 가계부나 장부 관리 앱이 아닙니다. 철저히 고립된 1인 기업가의 생존을 위해 극비리에 고안된 '프라이빗 의사결정 시뮬레이터'입니다. 전 세계 어디를 뒤져봐도 이와 같은 오프라인 전용 사령부는 존재하지 않습니다.
+                </p>
+                <p class="text-gray-400 text-lg mb-12 max-w-2xl mx-auto lang-en">
+                    BizBunker is not just a ledger app. It's a highly confidential 'Private Decision Simulator' designed for the survival of isolated solopreneurs. An offline-only command center like this exists nowhere else in the world.
                 </p>
             </div>
             
             <div class="max-w-2xl mx-auto bg-gradient-to-br from-emerald-500/20 to-navy-800 p-1 rounded-3xl relative mb-16" data-aos="zoom-in" data-aos-delay="200">
                 <div class="absolute -top-3 right-8 bg-emerald-500 text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider animate-pulse shadow-lg">Premium Lifetime</div>
                 <div class="bg-navy-900 rounded-[22px] p-10 h-full flex flex-col justify-center border border-emerald-500/30">
-                    <h4 class="text-emerald-400 font-bold mb-4 text-xl">BizBunker 평생 소장 라이선스</h4>
+                    <h4 class="text-emerald-400 font-bold mb-4 text-xl lang-ko">BizBunker 평생 소장 라이선스</h4>
+                    <h4 class="text-emerald-400 font-bold mb-4 text-xl lang-en">BizBunker Lifetime License</h4>
+                    
                     <div class="flex items-end justify-center gap-2 mb-8">
-                        <span class="text-6xl font-black">₩14,900</span>
+                        <span class="text-6xl font-black lang-ko">₩14,900</span>
+                        <span class="text-6xl font-black lang-en">$9.99</span>
                     </div>
                     <ul class="text-left space-y-4 mb-2 max-w-sm mx-auto">
-                        <li class="flex items-center text-gray-200"><span class="mr-3 text-emerald-500"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span> 대체 불가능한 1인 기업 전용 대시보드</li>
-                        <li class="flex items-center text-gray-200"><span class="mr-3 text-emerald-500"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span> 계정 가입조차 필요없는 완전한 익명성 보장</li>
-                        <li class="flex items-center text-gray-200"><span class="mr-3 text-emerald-500"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span> 복잡한 월 구독료 없이 평생 소장 및 업데이트</li>
+                        <li class="flex items-center text-gray-200">
+                            <span class="mr-3 text-emerald-500"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span> 
+                            <span class="lang-ko">대체 불가능한 1인 기업 전용 대시보드</span>
+                            <span class="lang-en">Irreplaceable dashboard for solopreneurs</span>
+                        </li>
+                        <li class="flex items-center text-gray-200">
+                            <span class="mr-3 text-emerald-500"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span> 
+                            <span class="lang-ko">계정 가입조차 필요없는 완전한 익명성 보장</span>
+                            <span class="lang-en">Total anonymity with zero sign-ups required</span>
+                        </li>
+                        <li class="flex items-center text-gray-200">
+                            <span class="mr-3 text-emerald-500"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span> 
+                            <span class="lang-ko">복잡한 월 구독료 없이 평생 소장 및 업데이트</span>
+                            <span class="lang-en">No monthly fees. Lifetime ownership & updates</span>
+                        </li>
                     </ul>
                 </div>
             </div>
             
             <div data-aos="fade-up" data-aos-delay="400">
-                <a href="#" class="inline-flex items-center justify-center w-full md:w-auto px-12 py-5 text-xl font-bold rounded-2xl bg-white text-black hover:scale-105 transition-transform duration-300 shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+                <!-- TODO: 아래 href 속성의 idXXXXXXXXX 부분을 실제 App Store 앱 ID로 변경해주세요 -->
+                <a href="https://apps.apple.com/app/idXXXXXXXXX" target="_blank" class="inline-flex items-center justify-center w-full md:w-auto px-12 py-5 text-xl font-bold rounded-2xl bg-white text-black hover:scale-105 transition-transform duration-300 shadow-[0_0_30px_rgba(255,255,255,0.2)]">
                     <svg class="w-8 h-8 mr-3" fill="currentColor" viewBox="0 0 24 24"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.04 2.26-.74 3.73-.78 2.02-.14 3.39.86 4.16 2.36-3.41 1.76-2.58 6.43.91 7.82-.48 1.25-1.14 2.5-1.88 3.77zm-4.32-15.11c-.04-1.83 1.39-3.46 3.16-3.66 1.11 2.24-1.39 3.86-3.16 3.66z"/></svg>
-                    App Store 다운로드 (무료 체험)
+                    <span class="lang-ko">App Store 다운로드 (무료 체험)</span>
+                    <span class="lang-en">Download on App Store</span>
                 </a>
-                <p class="mt-4 text-gray-500 text-sm">결제 전 인앱 환경을 실시간으로 시뮬레이션 할 수 있습니다.</p>
+                <p class="mt-4 text-gray-500 text-sm lang-ko">결제 전 모든 기능을 실시간으로 시뮬레이션 할 수 있습니다.</p>
+                <p class="mt-4 text-gray-500 text-sm lang-en">You can try the full simulator before deciding to buy.</p>
             </div>
         </div>
     </section>
@@ -240,11 +313,18 @@
                 <div class="w-6 h-6 rounded bg-emerald-500/20 border border-emerald-500/50 flex items-center justify-center font-outfit font-bold text-emerald-400 text-xs">B</div>
                 <span class="font-bold text-gray-300 tracking-wider">BizBunker</span>
             </div>
-            <p class="text-sm text-gray-600">© 2026 Elfwood. All rights reserved. 1인 기업 독립 스튜디오.</p>
+            <p class="text-sm text-gray-600 lang-ko">© 2026 Elfwood. All rights reserved. 1인 기업 독립 스튜디오.</p>
+            <p class="text-sm text-gray-600 lang-en">© 2026 Elfwood. All rights reserved. Independent solo studio.</p>
+            
             <div class="flex gap-4">
-                <a href="#" class="text-gray-500 hover:text-white transition text-sm">개인정보처리방침</a>
-                <a href="#" class="text-gray-500 hover:text-white transition text-sm">이용약관</a>
-                <a href="https://github.com/elfwood/decision-system/issues" class="text-gray-500 hover:text-white transition text-sm">고객지원 (Github)</a>
+                <a href="privacy.html" class="text-gray-500 hover:text-white transition text-sm">
+                    <span class="lang-ko">개인정보처리방침</span>
+                    <span class="lang-en">Privacy Policy</span>
+                </a>
+                <a href="https://github.com/elfwood/decision-system/issues" class="text-gray-500 hover:text-white transition text-sm">
+                    <span class="lang-ko">고객지원 (Github)</span>
+                    <span class="lang-en">Support (Github)</span>
+                </a>
             </div>
         </div>
     </footer>
@@ -265,6 +345,23 @@
                 nav.classList.add('glass-card');
             }
         });
+
+        // Language Toggle Logic
+        function toggleLanguage() {
+            const body = document.body;
+            const currentLang = body.getAttribute('data-lang');
+            const toggleText = document.getElementById('lang-toggle-text');
+            
+            if (currentLang === 'ko') {
+                body.setAttribute('data-lang', 'en');
+                document.documentElement.lang = 'en';
+                toggleText.innerText = '한국어';
+            } else {
+                body.setAttribute('data-lang', 'ko');
+                document.documentElement.lang = 'ko';
+                toggleText.innerText = 'English';
+            }
+        }
     </script>
 </body>
 </html>

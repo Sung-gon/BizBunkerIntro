@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>BizBunker | Field Manual</title>
+    
+    <meta name="description" content="BizBunker 전술 지휘소 작전 교범 - 1인 기업가를 위한 완벽한 매뉴얼"/>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;700;800&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- AOS Scroll Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Pretendard', 'sans-serif'],
+                        outfit: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            900: '#060E20',
+                            800: '#0D152C',
+                            700: '#182442',
+                        },
+                        emerald: {
+                            400: '#34d399',
+                            500: '#10b981',
+                        },
+                        military: '#041219'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body { 
+            font-family: 'Pretendard', sans-serif;
+            background-color: #060E20; 
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        /* Language Toggle Styles */
+        .lang-en { display: none; }
+        .lang-ko { display: block; }
+        span.lang-ko, span.lang-en, a.lang-ko, a.lang-en { display: none; }
+        img.lang-ko, img.lang-en { display: none; }
+        
+        body[data-lang="ko"] .lang-ko { display: block; }
+        body[data-lang="ko"] span.lang-ko, body[data-lang="ko"] a.lang-ko { display: inline-block; }
+        body[data-lang="ko"] img.lang-ko { display: block; }
+        body[data-lang="en"] .lang-en { display: block; }
+        body[data-lang="en"] span.lang-en, body[data-lang="en"] a.lang-en { display: inline-block; }
+        body[data-lang="en"] img.lang-en { display: block; }
+        body[data-lang="en"] .lang-ko { display: none !important; }
+
+        /* Sidebar active link */
+        .sidebar-link.active {
+            color: #34d399; /* emerald-400 */
+            font-weight: 700;
+            border-left-color: #34d399;
+        }
+    </style>
+</head>
+<body data-lang="ko" class="antialiased selection:bg-emerald-500/30 selection:text-emerald-200">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed w-full z-50 glass-card border-b border-white/5 transition-all duration-300 bg-navy-900/80 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-lg bg-emerald-500/20 border border-emerald-500/50 flex items-center justify-center font-outfit font-black text-emerald-400 text-xl group-hover:bg-emerald-500/30 transition shadow-[0_0_15px_rgba(16,185,129,0.3)]">B</div>
+                <span class="font-outfit font-bold text-2xl tracking-wider text-white">BizBunker</span>
+            </a>
+            
+            <div class="flex items-center gap-8">
+                <button id="langToggle" class="text-sm font-semibold text-gray-400 hover:text-white transition flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full border border-white/10">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
+                    <span class="lang-ko">English</span>
+                    <span class="lang-en">한국어</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Layout -->
+    <div class="max-w-7xl mx-auto px-6 pt-32 pb-24 flex flex-col lg:flex-row gap-12">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="w-full lg:w-64 flex-shrink-0">
+            <div class="sticky top-32 glass-card rounded-2xl p-6 border border-white/10 hidden lg:block max-h-[80vh] overflow-y-auto">
+                <h3 class="text-lg font-bold text-white mb-6 uppercase tracking-wider font-outfit lang-ko">야전 교범 목차</h3>
+                <h3 class="text-lg font-bold text-white mb-6 uppercase tracking-wider font-outfit lang-en">Manual Index</h3>
+                <ul class="space-y-4 text-gray-400 text-sm" id="sidebar-nav">
+                    <li><a href="#intro" class="sidebar-link block pl-4 border-l-2 border-transparent hover:text-white transition lang-ko">01. 작전 개요</a></li>
+                    <li><a href="#intro" class="sidebar-link block pl-4 border-l-2 border-transparent hover:text-white transition lang-en">01. Introduction</a></li>
+                    
+                    <li><a href="#dashboard" class="sidebar-link block pl-4 border-l-2 border-transparent hover:text-white transition lang-ko">02. 지휘 통제실</a></li>
+                    <li><a href="#dashboard" class="sidebar-link block pl-4 border-l-2 border-transparent hover:text-white transition lang-en">02. Command Center</a></li>
+                    
+                    <li><a href="#analytics" class="sidebar-link block pl-4 border-l-2 border-transparent hover:text-white transition lang-ko">03. 통계 분석</a></li>
+                    <li><a href="#analytics" class="sidebar-link block pl-4 border-l-2 border-transparent hover:text-white transition lang-en">03. Analytics</a></li>
+                    
+                    <li><a href="#simulation" class="sidebar-link block pl-4 border-l-2 border-transparent hover:text-white transition lang-ko">04. 자금 배분 및 시뮬레이션</a></li>
+                    <li><a href="#simulation" class="sidebar-link block pl-4 border-l-2 border-transparent hover:text-white transition lang-en">04. Funds & Simulation</a></li>
+                    
+                    <li><a href="#reserve" class="sidebar-link block pl-4 border-l-2 border-transparent hover:text-white transition lang-ko">05. 전략 비축고</a></li>
+                    <li><a href="#reserve" class="sidebar-link block pl-4 border-l-2 border-transparent hover:text-white transition lang-en">05. Reserve Accounts</a></li>
+                    
+                    <li><a href="#mainaccount" class="sidebar-link block pl-4 border-l-2 border-transparent hover:text-white transition lang-ko">06. 현금 탄약고</a></li>
+                    <li><a href="#mainaccount" class="sidebar-link block pl-4 border-l-2 border-transparent hover:text-white transition lang-en">06. Main Account</a></li>
+                    
+                    <li><a href="#costdiet" class="sidebar-link block pl-4 border-l-2 border-transparent hover:text-white transition lang-ko">07. 의존성 그래프</a></li>
+                    <li><a href="#costdiet" class="sidebar-link block pl-4 border-l-2 border-transparent hover:text-white transition lang-en">07. Dependency Graph</a></li>
+                    
+                    <li><a href="#costnodes" class="sidebar-link block pl-4 border-l-2 border-transparent hover:text-white transition lang-ko">08. 지출 노드 관리</a></li>
+                    <li><a href="#costnodes" class="sidebar-link block pl-4 border-l-2 border-transparent hover:text-white transition lang-en">08. Cost Nodes</a></li>
+                    
+                    <li><a href="#revenue" class="sidebar-link block pl-4 border-l-2 border-transparent hover:text-white transition lang-ko">09. 수익 파이프라인</a></li>
+                    <li><a href="#revenue" class="sidebar-link block pl-4 border-l-2 border-transparent hover:text-white transition lang-en">09. Revenue Streams</a></li>
+                    
+                    <li><a href="#tacticsboard" class="sidebar-link block pl-4 border-l-2 border-transparent hover:text-white transition lang-ko">10. 전술 노드 보드</a></li>
+                    <li><a href="#tacticsboard" class="sidebar-link block pl-4 border-l-2 border-transparent hover:text-white transition lang-en">10. Tactics Board</a></li>
+                    
+                    <li><a href="#calendar" class="sidebar-link block pl-4 border-l-2 border-transparent hover:text-white transition lang-ko">11. 작전 스케쥴</a></li>
+                    <li><a href="#calendar" class="sidebar-link block pl-4 border-l-2 border-transparent hover:text-white transition lang-en">11. Local Calendar</a></li>
+                    
+                    <li><a href="#vault" class="sidebar-link block pl-4 border-l-2 border-transparent hover:text-white transition lang-ko">12. 기밀 문서함</a></li>
+                    <li><a href="#vault" class="sidebar-link block pl-4 border-l-2 border-transparent hover:text-white transition lang-en">12. Secure Vault</a></li>
+                    
+                    <li><a href="#settings" class="sidebar-link block pl-4 border-l-2 border-transparent hover:text-white transition lang-ko">13. 시스템 환경설정</a></li>
+                    <li><a href="#settings" class="sidebar-link block pl-4 border-l-2 border-transparent hover:text-white transition lang-en">13. System Settings</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="flex-1 space-y-24">
+            
+            <!-- Title Section -->
+            <div class="border-b border-white/10 pb-8">
+                <h1 class="text-4xl lg:text-5xl font-bold mb-4 lang-ko">Field Manual</h1>
+                <h1 class="text-4xl lg:text-5xl font-bold mb-4 lang-en">Field Manual</h1>
+                <p class="text-xl text-gray-400 lang-ko">1인 기업을 위한 생존 지휘소 상세 작전 교범.</p>
+                <p class="text-xl text-gray-400 lang-en">Detailed operations protocol for the solopreneur command center.</p>
+            </div>
+
+            <!-- 01. Intro -->
+            <section id="intro" class="scroll-mt-32 content-section">
+                <h2 class="text-3xl font-bold mb-6 text-emerald-400 flex items-center gap-3">
+                    <span class="text-white/20 font-outfit text-4xl">01</span>
+                    <span class="lang-ko">작전 개요 (Introduction)</span>
+                    <span class="lang-en">Introduction</span>
+                </h2>
+                <div class="prose prose-invert max-w-none text-gray-300 leading-relaxed space-y-6">
+                    <p class="lang-ko">BizBunker는 귀하의 데이터를 외부 클라우드에 전송하지 않습니다. 이곳은 군사급 AES-256 암호화로 보호되는 완전히 격리된 <strong>로컬 전술 지휘소</strong>입니다. 모든 정보는 귀하의 통제 하에 있으며, 오직 귀하의 디바이스에만 저장됩니다.</p>
+                    <p class="lang-en">BizBunker does not transmit your data to any external cloud. This is a completely isolated <strong>local tactical command center</strong> protected by military-grade AES-256 encryption. All information is under your control and stored solely on your device.</p>
+                </div>
+            </section>
+
+            <!-- 02. Dashboard -->
+            <section id="dashboard" class="scroll-mt-32 content-section" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-6 text-emerald-400 flex items-center gap-3">
+                    <span class="text-white/20 font-outfit text-4xl">02</span>
+                    <span class="lang-ko">지휘 통제실 (Command Center)</span>
+                    <span class="lang-en">Command Center</span>
+                </h2>
+                <div class="glass-card rounded-2xl overflow-hidden mb-8 border border-white/10">
+                    <img src="./assets/manual/ko/지휘통제실.png" alt="Dashboard" class="w-full h-auto lang-ko">
+                    <img src="./assets/manual/en/지휘통제실_en.png" alt="Dashboard" class="w-full h-auto lang-en">
+                </div>
+                <div class="prose prose-invert max-w-none text-gray-300 leading-relaxed space-y-6">
+                    <p class="lang-ko">대시보드는 비즈니스의 현재 생존 상태를 즉각적으로 파악할 수 있는 메인 계기판입니다. 런웨이(잔여 생존 기간), 최근 현금 흐름, 그리고 임박한 마일스톤들을 한눈에 감시할 수 있습니다.</p>
+                    <p class="lang-en">The Command Center is your primary instrument panel, providing an immediate understanding of your business's survival status. Monitor your Runway (survival months), recent cash flows, and impending milestones at a glance.</p>
+                </div>
+            </section>
+            
+            <!-- 03. Analytics -->
+            <section id="analytics" class="scroll-mt-32 content-section" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-6 text-emerald-400 flex items-center gap-3">
+                    <span class="text-white/20 font-outfit text-4xl">03</span>
+                    <span class="lang-ko">통계 분석 (Analytics)</span>
+                    <span class="lang-en">Analytics</span>
+                </h2>
+                <div class="glass-card rounded-2xl overflow-hidden mb-8 border border-white/10">
+                    <img src="./assets/manual/ko/통계분석.png" alt="Analytics" class="w-full h-auto lang-ko">
+                    <img src="./assets/manual/en/통계분석_en.png" alt="Analytics" class="w-full h-auto lang-en">
+                </div>
+                <div class="prose prose-invert max-w-none text-gray-300 leading-relaxed space-y-6">
+                    <p class="lang-ko">수익과 지출의 흐름을 심층적으로 분석합니다. 다이내믹 차트를 통해 월별 추이를 파악하고 카테고리별 자금 낭비 요소를 식별합니다.</p>
+                    <p class="lang-en">Deeply analyze the flow of your revenue and expenses. Identify monthly trends and isolate funding waste per category using dynamic charts.</p>
+                </div>
+            </section>
+            
+            <!-- 04. Funds & Simulation -->
+            <section id="simulation" class="scroll-mt-32 content-section" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-6 text-emerald-400 flex items-center gap-3">
+                    <span class="text-white/20 font-outfit text-4xl">04</span>
+                    <span class="lang-ko">자금 배분 및 시뮬레이션</span>
+                    <span class="lang-en">Funds Allocation & Simulation</span>
+                </h2>
+                <div class="glass-card rounded-2xl overflow-hidden mb-8 border border-white/10">
+                    <img src="./assets/manual/ko/자금배분및시뮬레이션.png" alt="Simulation" class="w-full h-auto lang-ko">
+                    <img src="./assets/manual/en/자금배분및시뮬레이션_en.png" alt="Simulation" class="w-full h-auto lang-en">
+                </div>
+                <div class="prose prose-invert max-w-none text-gray-300 leading-relaxed space-y-6">
+                    <p class="lang-ko">세금 방어 기금과 비상금을 안전하게 분리하고, 가상의 스트레스 테스트(Defcon 모드 등)를 통해 극단적인 상황에서의 생존력을 점검합니다.</p>
+                    <p class="lang-en">Safely separate your tax defense funds and reserves, and check your survivability in extreme situations through virtual stress testing (e.g. Defcon Mode).</p>
+                </div>
+            </section>
+            
+            <!-- 05. Reserve -->
+            <section id="reserve" class="scroll-mt-32 content-section" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-6 text-emerald-400 flex items-center gap-3">
+                    <span class="text-white/20 font-outfit text-4xl">05</span>
+                    <span class="lang-ko">전략 비축고 (Reserve Accounts)</span>
+                    <span class="lang-en">Reserve Accounts</span>
+                </h2>
+                <div class="glass-card rounded-2xl overflow-hidden mb-8 border border-white/10">
+                    <img src="./assets/manual/ko/전략비축고.png" alt="Reserve Accounts" class="w-full h-auto lang-ko">
+                    <img src="./assets/manual/en/전략비축고_en.png" alt="Reserve Accounts" class="w-full h-auto lang-en">
+                </div>
+                <div class="prose prose-invert max-w-none text-gray-300 leading-relaxed space-y-6">
+                    <p class="lang-ko">세금, 감가상각, 또는 예기치 못한 위기에 대비해 자금을 별도로 보관하는 특수 목적 계좌들을 관리합니다.</p>
+                    <p class="lang-en">Manage special-purpose accounts where you store funds separately in preparation for taxes, depreciation, or unexpected crises.</p>
+                </div>
+            </section>
+
+            <!-- 06. Main Account -->
+            <section id="mainaccount" class="scroll-mt-32 content-section" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-6 text-emerald-400 flex items-center gap-3">
+                    <span class="text-white/20 font-outfit text-4xl">06</span>
+                    <span class="lang-ko">현금 탄약고 (Main Account)</span>
+                    <span class="lang-en">Main Account</span>
+                </h2>
+                <div class="glass-card rounded-2xl overflow-hidden mb-8 border border-white/10">
+                    <img src="./assets/manual/ko/현금탄약고.png" alt="Main Account" class="w-full h-auto lang-ko">
+                    <img src="./assets/manual/en/현금탄약고_en.png" alt="Main Account" class="w-full h-auto lang-en">
+                </div>
+                <div class="prose prose-invert max-w-none text-gray-300 leading-relaxed space-y-6">
+                    <p class="lang-ko">비즈니스의 일상적인 입출금 및 운영 자금이 흐르는 주 계좌(Main Bank Account)의 세부 거래 내역을 추적합니다.</p>
+                    <p class="lang-en">Track detailed transactions of your Main Bank Account where the daily operations and cash flow of your business reside.</p>
+                </div>
+            </section>
+
+            <!-- 07. Cost Diet -->
+            <section id="costdiet" class="scroll-mt-32 content-section" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-6 text-emerald-400 flex items-center gap-3">
+                    <span class="text-white/20 font-outfit text-4xl">07</span>
+                    <span class="lang-ko">의존성 그래프 (Cost Dependency Graph)</span>
+                    <span class="lang-en">Dependency Graph</span>
+                </h2>
+                <div class="glass-card rounded-2xl overflow-hidden mb-8 border border-white/10">
+                    <img src="./assets/manual/ko/의존성그래프.png" alt="Dependency Graph" class="w-full h-auto lang-ko">
+                    <img src="./assets/manual/en/의존성그래프_en.png" alt="Dependency Graph" class="w-full h-auto lang-en">
+                </div>
+                <div class="prose prose-invert max-w-none text-gray-300 leading-relaxed space-y-6">
+                    <p class="lang-ko">SaaS 구독료 및 고정 지출 항목들 간의 의존도를 시각화합니다. 불필요한 비용 구조를 식별하고 다이어트(최적화)하는 데 사용됩니다.</p>
+                    <p class="lang-en">Visualize the dependency between your SaaS subscriptions and fixed expenses. Use this graph to identify and optimize unnecessary cost structures.</p>
+                </div>
+            </section>
+
+            <!-- 08. Cost Nodes -->
+            <section id="costnodes" class="scroll-mt-32 content-section" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-6 text-emerald-400 flex items-center gap-3">
+                    <span class="text-white/20 font-outfit text-4xl">08</span>
+                    <span class="lang-ko">지출 노드 관리 (Cost Nodes)</span>
+                    <span class="lang-en">Cost Nodes</span>
+                </h2>
+                <div class="glass-card rounded-2xl overflow-hidden mb-8 border border-white/10">
+                    <img src="./assets/manual/ko/지출노드관리.png" alt="Cost Nodes" class="w-full h-auto lang-ko">
+                    <img src="./assets/manual/en/지출노드관리_en.png" alt="Cost Nodes" class="w-full h-auto lang-en">
+                </div>
+                <div class="prose prose-invert max-w-none text-gray-300 leading-relaxed space-y-6">
+                    <p class="lang-ko">모든 정기 결제 항목과 숨만 쉬어도 나가는 고정비를 '노드(Node)' 형태로 관리합니다. 항목별 활성화 비율을 토글하여 시뮬레이션에 반영할 수 있습니다.</p>
+                    <p class="lang-en">Manage all recurring payments and fixed expenses as 'Nodes'. You can toggle the activation ratio of each item to immediately reflect changes in the simulation.</p>
+                </div>
+            </section>
+
+            <!-- 09. Revenue -->
+            <section id="revenue" class="scroll-mt-32 content-section" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-6 text-emerald-400 flex items-center gap-3">
+                    <span class="text-white/20 font-outfit text-4xl">09</span>
+                    <span class="lang-ko">수익 파이프라인 (Revenue Streams)</span>
+                    <span class="lang-en">Revenue Streams</span>
+                </h2>
+                <div class="glass-card rounded-2xl overflow-hidden mb-8 border border-white/10">
+                    <img src="./assets/manual/ko/수익파이프라인.png" alt="Revenue Streams" class="w-full h-auto lang-ko">
+                    <img src="./assets/manual/en/수익파이프라인_en.png" alt="Revenue Streams" class="w-full h-auto lang-en">
+                </div>
+                <div class="prose prose-invert max-w-none text-gray-300 leading-relaxed space-y-6">
+                    <p class="lang-ko">비즈니스의 자금줄을 시각화합니다. 단기 프로젝트 대금부터 정기적인 유지보수(Retainer) 계약까지 파이프라인별 마일스톤과 입금 상태를 관리합니다.</p>
+                    <p class="lang-en">Visualize the lifelines of your business. Manage milestones and payment statuses across pipelines, from short-term projects to recurring retainer contracts.</p>
+                </div>
+            </section>
+
+            <!-- 10. Tactics Board -->
+            <section id="tacticsboard" class="scroll-mt-32 content-section" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-6 text-emerald-400 flex items-center gap-3">
+                    <span class="text-white/20 font-outfit text-4xl">10</span>
+                    <span class="lang-ko">전술 노드 보드 (Tactics Board)</span>
+                    <span class="lang-en">Tactics Board</span>
+                </h2>
+                <div class="glass-card rounded-2xl overflow-hidden mb-8 border border-white/10">
+                    <img src="./assets/manual/ko/전술노드보드.png" alt="Tactics Board" class="w-full h-auto lang-ko">
+                    <img src="./assets/manual/en/전술노드보드_en.png" alt="Tactics Board" class="w-full h-auto lang-en">
+                </div>
+                <div class="prose prose-invert max-w-none text-gray-300 leading-relaxed space-y-6">
+                    <p class="lang-ko">아이디어 구상 단계부터 작전 완료까지 업무 흐름을 통제하는 칸반(Kanban) 스타일 보드입니다. 거래처별로 묶어 직관적으로 관리하세요.</p>
+                    <p class="lang-en">A Kanban-style board to control the flow of tasks from idea conception to operation completion. Manage tasks intuitively by grouping them per client.</p>
+                </div>
+            </section>
+
+            <!-- 11. Calendar -->
+            <section id="calendar" class="scroll-mt-32 content-section" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-6 text-emerald-400 flex items-center gap-3">
+                    <span class="text-white/20 font-outfit text-4xl">11</span>
+                    <span class="lang-ko">작전 스케쥴 (Local Calendar)</span>
+                    <span class="lang-en">Local Calendar</span>
+                </h2>
+                <div class="glass-card rounded-2xl overflow-hidden mb-8 border border-white/10">
+                    <img src="./assets/manual/ko/작전스케쥴.png" alt="Calendar" class="w-full h-auto lang-ko">
+                    <img src="./assets/manual/en/작전스케쥴_en.png" alt="Calendar" class="w-full h-auto lang-en">
+                </div>
+                <div class="prose prose-invert max-w-none text-gray-300 leading-relaxed space-y-6">
+                    <p class="lang-ko">클라우드 캘린더와 동기화되지 않는 완전한 로컬 보안 캘린더입니다. 민감한 미팅 일정과 중요한 수익/지출 마일스톤이 자동으로 표시됩니다.</p>
+                    <p class="lang-en">A completely local secure calendar that does not sync with cloud calendars. Sensitive meeting schedules and important revenue/expense milestones are automatically displayed.</p>
+                </div>
+            </section>
+
+            <!-- 12. Vault -->
+            <section id="vault" class="scroll-mt-32 content-section" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-6 text-emerald-400 flex items-center gap-3">
+                    <span class="text-white/20 font-outfit text-4xl">12</span>
+                    <span class="lang-ko">기밀 문서함 (Secure Vault)</span>
+                    <span class="lang-en">Secure Vault</span>
+                </h2>
+                <div class="glass-card rounded-2xl overflow-hidden mb-8 border border-white/10">
+                    <img src="./assets/manual/ko/기밀문서함.png" alt="Vault" class="w-full h-auto lang-ko">
+                    <img src="./assets/manual/en/기밀문서함_en.png" alt="Vault" class="w-full h-auto lang-en">
+                </div>
+                <div class="prose prose-invert max-w-none text-gray-300 leading-relaxed space-y-6">
+                    <p class="lang-ko">중요한 계약서, 보안 키, 패스워드 등 외부로 절대 유출되어서는 안 될 데이터들을 기기 자체의 암호화 시스템과 결합하여 완벽하게 숨깁니다.</p>
+                    <p class="lang-en">Perfectly hide crucial data that must never be leaked outside, such as important contracts, security keys, and passwords, combined with the device's native encryption system.</p>
+                </div>
+            </section>
+
+            <!-- 13. Settings -->
+            <section id="settings" class="scroll-mt-32 content-section" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-6 text-emerald-400 flex items-center gap-3">
+                    <span class="text-white/20 font-outfit text-4xl">13</span>
+                    <span class="lang-ko">시스템 환경설정 (System Settings)</span>
+                    <span class="lang-en">System Settings</span>
+                </h2>
+                <div class="glass-card rounded-2xl overflow-hidden mb-8 border border-white/10">
+                    <img src="./assets/manual/ko/시스템환경설정.png" alt="Settings" class="w-full h-auto lang-ko">
+                    <img src="./assets/manual/en/시스템환경설정_en.png" alt="Settings" class="w-full h-auto lang-en">
+                </div>
+                <div class="prose prose-invert max-w-none text-gray-300 leading-relaxed space-y-6">
+                    <p class="lang-ko">앱 테마, 국가별 부가세(VAT) 자동 계산 비율, 데이터베이스 백업 및 복원, 그리고 화면 잠금 암호 설정 등 지휘소의 핵심 보안/기능을 관리합니다.</p>
+                    <p class="lang-en">Manage the core security and functionality of your command center, including app themes, global VAT calculation rates, database backups, and screen lock passwords.</p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/5 bg-navy-900">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-sm text-gray-600">© 2026 ExaPeak Soft Solutions. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, duration: 800, offset: 100 });
+
+        // Language Toggle
+        const langToggle = document.getElementById('langToggle');
+        langToggle.addEventListener('click', () => {
+            const currentLang = document.body.getAttribute('data-lang');
+            const newLang = currentLang === 'ko' ? 'en' : 'ko';
+            document.body.setAttribute('data-lang', newLang);
+            localStorage.setItem('bizbunker_lang', newLang);
+        });
+
+        // Load saved language
+        const savedLang = localStorage.getItem('bizbunker_lang');
+        if (savedLang) {
+            document.body.setAttribute('data-lang', savedLang);
+        }
+
+        // ScrollSpy implementation
+        const sections = document.querySelectorAll('.content-section');
+        const navLinks = document.querySelectorAll('.sidebar-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

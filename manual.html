@@ -401,9 +401,13 @@
         });
 
         // Load saved language
-        const savedLang = localStorage.getItem('bizbunker_lang');
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlLang = urlParams.get('lang');
+        const savedLang = urlLang || localStorage.getItem('bizbunker_lang');
+        
         if (savedLang) {
             document.body.setAttribute('data-lang', savedLang);
+            localStorage.setItem('bizbunker_lang', savedLang); // Sync
         }
 
         // ScrollSpy implementation

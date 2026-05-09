@@ -104,7 +104,7 @@
             </div>
             <div class="flex items-center gap-6">
                 <!-- Field Manual Link -->
-                <a href="manual.html" class="text-sm font-bold text-emerald-300 hover:text-white transition flex items-center gap-1.5 bg-emerald-500/20 px-4 py-2 rounded-full border border-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.4)] hover:bg-emerald-500/40 hover:shadow-[0_0_25px_rgba(16,185,129,0.6)] group">
+                <a href="manual.html?lang=ko" class="manual-link text-sm font-bold text-emerald-300 hover:text-white transition flex items-center gap-1.5 bg-emerald-500/20 px-4 py-2 rounded-full border border-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.4)] hover:bg-emerald-500/40 hover:shadow-[0_0_25px_rgba(16,185,129,0.6)] group">
                     <svg class="w-4 h-4 group-hover:animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                     <span class="lang-ko">매뉴얼 보기</span>
                     <span class="lang-en">Field Manual</span>
@@ -162,7 +162,7 @@
                     <span class="lang-en">Download Now (Free Trial)</span>
                 </a>
                 
-                <a href="manual.html" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-bold rounded-xl bg-white/5 text-emerald-400 border border-emerald-500/50 hover:bg-emerald-500/10 transition shadow-[0_0_15px_rgba(16,185,129,0.1)]">
+                <a href="manual.html?lang=ko" class="manual-link w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-bold rounded-xl bg-white/5 text-emerald-400 border border-emerald-500/50 hover:bg-emerald-500/10 transition shadow-[0_0_15px_rgba(16,185,129,0.1)]">
                     <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                     <span class="lang-ko">상세 작전 교범 보기</span>
                     <span class="lang-en">View Field Manual</span>
@@ -503,7 +503,7 @@
             <p class="text-sm text-gray-600 lang-en">© 2026 ExaPeak Soft Solutions. All rights reserved.</p>
             
             <div class="flex gap-4 flex-wrap justify-center">
-                <a href="manual.html" class="text-emerald-400 hover:text-emerald-300 transition text-sm font-semibold">
+                <a href="manual.html?lang=ko" class="manual-link text-emerald-400 hover:text-emerald-300 transition text-sm font-semibold">
                     <span class="lang-ko">야전 교범 (매뉴얼)</span>
                     <span class="lang-en">Field Manual</span>
                 </a>
@@ -537,21 +537,35 @@
         });
 
         // Language Toggle Logic
-        function toggleLanguage() {
+        function setLanguage(lang) {
             const body = document.body;
-            const currentLang = body.getAttribute('data-lang');
             const toggleText = document.getElementById('lang-toggle-text');
             
-            if (currentLang === 'ko') {
-                body.setAttribute('data-lang', 'en');
-                document.documentElement.lang = 'en';
-                toggleText.innerText = '한국어';
-            } else {
-                body.setAttribute('data-lang', 'ko');
-                document.documentElement.lang = 'ko';
-                toggleText.innerText = 'English';
-            }
+            body.setAttribute('data-lang', lang);
+            document.documentElement.lang = lang;
+            toggleText.innerText = lang === 'en' ? '한국어' : 'English';
+            
+            localStorage.setItem('bizbunker_lang', lang);
+            
+            document.querySelectorAll('.manual-link').forEach(link => {
+                link.href = 'manual.html?lang=' + lang;
+            });
         }
+
+        function toggleLanguage() {
+            const currentLang = document.body.getAttribute('data-lang');
+            setLanguage(currentLang === 'ko' ? 'en' : 'ko');
+        }
+
+        // Initialize saved language
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('bizbunker_lang');
+            if (savedLang) {
+                setLanguage(savedLang);
+            } else {
+                setLanguage('ko');
+            }
+        });
     </script>
 </body>
 </html>
